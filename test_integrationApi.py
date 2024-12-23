@@ -170,7 +170,6 @@ def test_response_body_post():
     payload = load_request_data()
     response = requests.post(url, json=payload)
     assert response.status_code in [200, 201]
-    # Check that the response body contains specific expected fields, e.g., 'id' or 'title'
     response_data = response.json()
     assert "id" in response_data
     assert "title" in response_data
@@ -178,7 +177,6 @@ def test_response_body_post():
 # Test for failed POST request (e.g., invalid data)
 def test_failed_post_request():
     url = f"{BASE_URL}/posts"
-    # Simulate invalid payload, e.g., missing required fields
-    invalid_payload = {"title": "Test Post"}  # Missing other required fields
+    invalid_payload = {"title": "Test Post"}  
     response = requests.post(url, json=invalid_payload)
-    assert response.status_code == 400  # Expecting a 400 Bad Request error for invalid data
+    assert response.status_code == 400  
